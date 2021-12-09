@@ -9,6 +9,7 @@ namespace backpack
             var backpack = new Backpack();
             var maxPriceItems = backpack.GetMaxPrices();
             Console.WriteLine($"Max item prices is: {maxPriceItems}");
+            backpack.Start();
         }
     }
 }

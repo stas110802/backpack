@@ -21,6 +21,7 @@ namespace backpack
         public int[] _weight;
         public int[] _values;
         private int _maxCapcity;
+        private int[,] _arr;
 
         public int GetMaxPrices()
         {
@@ -50,8 +51,31 @@ namespace backpack
                     }
                 }
             }
+            _arr = arr;
+
             // КНП элемент
             return arr[_weight.Length, _maxCapcity];
+        }
+
+        private void Print(int i, int j)
+        {
+            if (_arr[i, j] == 0) return;
+            
+            if(_arr[i-1, j] == _arr[i, j])
+            {
+                Print(i-1,j);
+            }
+            else
+            {
+                Print(i - 1, j - _weight[i-1]);
+                Console.Write(i + " ");
+            }
+        }
+
+        public void Start()
+        {
+            Console.Write("Items list: ");
+            Print(_values.Count(),_maxCapcity);
         }
     }
 }
